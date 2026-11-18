@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Изделие — Профиль-Ока</title>
+<meta name="description" content="Характеристики, цена за метр с НДС, остаток на складе и расчёт резки.">
+<meta name="theme-color" content="#111111">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/commissioner-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css?v=38">
+<link rel="stylesheet" href="css/site.css?v=38">
+</head>
+<body>
+
+<!-- header:start -->
+<div class="shead">
+<div class="demo-strip">
+  <span>Сайт-образец: завод, цены и люди придуманы.</span>
+  <a href="kabinet.html">Посмотреть, куда попадает заявка <span aria-hidden="true">→</span></a>
+  <a href="status.html" class="hide-m">Статус заявки глазами покупателя</a>
+</div>
+
+<header class="top">
+  <a class="logo" href="index.html" aria-label="Профиль-Ока, на главную"><svg class="logo__i" viewBox="0 0 40 32" aria-hidden="true"><rect x="2" y="23" width="36" height="3" fill="currentColor"/><path d="M5 26h4v5H5zM31 26h4v5h-4z" fill="currentColor"/><path d="M3 5h9v18H3z" fill="currentColor"/><circle cx="15" cy="14" r="5" fill="var(--acc, #1A4A8F)"/><circle cx="15" cy="14" r="1.6" fill="#fff"/><rect x="19" y="12.5" width="11" height="3" fill="var(--acc, #1A4A8F)"/><path d="M22 23l2.5-5 2.5 5z" fill="currentColor"/><path d="M30 11h7v12h-7z" fill="currentColor"/></svg><span>ПРОФИЛЬ-ОКА</span></a>
+  <nav class="nav" id="menu" aria-label="Разделы сайта">
+    <a href="katalog.html" aria-current="page">Каталог</a>
+    <a href="profil-po-chertezhu.html">Профиль по чертежу</a>
+    <a href="rezka.html">Резка</a>
+    <a href="proizvodstvo.html">Производство</a>
+    <a href="dostavka.html">Доставка</a>
+    <a href="kontakty.html">Контакты</a>
+    <div class="nav__m">
+      <a href="tel:+70000000000" data-demo="Звонок в отдел продаж">+7 (000) 000-00-00</a>
+      <a href="kabinet.html">Кабинет менеджера</a>
+    </div>
+  </nav>
+  <a class="top__ph" href="tel:+70000000000" data-demo="Звонок в отдел продаж">+7 (000) 000-00-00<small>Калуга, пн–пт 8:00–16:00</small></a>
+  <a class="top__ph top__ph--2" href="tel:+70000000000" data-demo="Звонок в московский офис">+7 (000) 000-00-01<small>Москва, офис и склад</small></a>
+  <a class="top__req" href="zayavka.html">Заявка на КП <b data-req-count>0</b></a>
+  <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="menu"><span></span></button>
+</header>
+</div>
+<!-- header:end -->
+
+<main class="page">
+  <div class="pagehead pagehead--item">
+    <nav class="crumbs" aria-label="Вы здесь" id="crumbs"><a href="index.html">Главная</a><span aria-hidden="true">→</span><a href="katalog.html">Каталог</a></nav>
+    <h1 class="pname" id="pname">Изделие</h1>
+    <p class="pagehead__t" id="psub"></p>
+  </div>
+
+  <div class="item" id="item">
+    <section class="view" aria-label="Изображение изделия">
+      <div class="view__tabs" role="tablist">
+        <button type="button" role="tab" id="t3d" aria-selected="true" aria-controls="v3d">3D-отрезок</button>
+        <button type="button" role="tab" id="tdr" aria-selected="false" aria-controls="vdr">Чертёж сечения</button>
+      </div>
+      <div class="view__p" id="v3d" role="tabpanel" aria-labelledby="t3d">
+        <canvas id="cv" tabindex="0" aria-label="3D-модель отрезка. Потяните мышью или пальцем, чтобы повернуть; стрелки на клавиатуре тоже работают."></canvas>
+        <p class="view__cap">Потяните, чтобы повернуть. Сечение по&nbsp;размерам из&nbsp;каталога, длина отрезка условная.</p>
+      </div>
+      <div class="view__p" id="vdr" role="tabpanel" aria-labelledby="tdr" hidden></div>
+    </section>
+
+    <aside class="buy" id="buy" aria-label="Цена и заказ">
+      <div class="buy__price"><b id="bPrice"></b><span id="bPriceS"></span></div>
+      <p class="buy__stock" id="bStock"></p>
+      <div class="seg" role="radiogroup" aria-label="Как заказать" id="bMode">
+        <label><input type="radio" name="mode" value="bars" checked><span id="bModeA">Хлыстами</span></label>
+        <label><input type="radio" name="mode" value="cut"><span>С резкой в размер</span></label>
+      </div>
+      <form class="buy__f" id="bForm" novalidate>
+        <div class="buy__in" id="inBars"><label class="fld"><span>Количество, <span id="bUnit">хлыстов</span></span><input id="bQty" type="number" inputmode="numeric" min="1" step="1" value="1"></label></div>
+        <div class="buy__in buy__in--2" id="inCut" hidden>
+          <label class="fld">Длина отрезка, мм<input id="bLen" type="number" inputmode="numeric" min="50" step="1" value="1000"></label>
+          <label class="fld">Количество, шт<input id="bN" type="number" inputmode="numeric" min="1" step="1" value="10"></label>
+        </div>
+        <div class="buy__res" id="bRes" aria-live="polite"></div>
+        <button class="btn btn--w" type="submit" id="bAdd">Добавить в заявку</button>
+        <button class="btn btn--o btn--w" type="button" id="bCmp" aria-pressed="false">Добавить к сравнению</button>
+      </form>
+      <p class="buy__n">Это ориентир по&nbsp;прайсу. Точную цену с&nbsp;учётом объёма и&nbsp;доставки менеджер пришлёт в&nbsp;КП за&nbsp;2&nbsp;рабочих часа.</p>
+    </aside>
+
+    <section class="spec" aria-labelledby="specT">
+      <h2 class="h3" id="specT">Характеристики</h2>
+      <table class="rows rows--spec" id="specTab"></table>
+    </section>
+  </div>
+
+  <section class="sim sec-pad" aria-labelledby="simT">
+    <div class="sim__h"><h2 class="h2" id="simT">В этом же разделе</h2><a class="lnk" id="simAll" href="katalog.html">Весь раздел <span aria-hidden="true">→</span></a></div>
+    <table class="ptab"><tbody id="sim"></tbody></table>
+  </section>
+
+  <div class="empty empty--page" id="nf" hidden>
+    <h2 class="h3">Такой позиции нет в&nbsp;каталоге</h2>
+    <p>Возможно, артикул изменился. Найдите изделие в&nbsp;каталоге или пришлите спецификацию — подберём.</p>
+    <div class="btns"><a class="btn" href="katalog.html">Открыть каталог</a><a class="btn btn--o" href="zayavka.html">Прислать спецификацию</a></div>
+  </div>
+</main>
+
+<!-- footer:start -->
+<footer class="foot">
+  <div class="foot__a">
+    <a class="logo" href="index.html"><svg class="logo__i" viewBox="0 0 40 32" aria-hidden="true"><rect x="2" y="23" width="36" height="3" fill="currentColor"/><path d="M5 26h4v5H5zM31 26h4v5h-4z" fill="currentColor"/><path d="M3 5h9v18H3z" fill="currentColor"/><circle cx="15" cy="14" r="5" fill="var(--acc, #1A4A8F)"/><circle cx="15" cy="14" r="1.6" fill="#fff"/><rect x="19" y="12.5" width="11" height="3" fill="var(--acc, #1A4A8F)"/><path d="M22 23l2.5-5 2.5 5z" fill="currentColor"/><path d="M30 11h7v12h-7z" fill="currentColor"/></svg><span>ПРОФИЛЬ-ОКА</span></a>
+    <p>Калуга, Индустриальная ул., 00, корпус 3 (адрес вымышлен). Склад отгружает с&nbsp;8:00 до&nbsp;16:00, машины-длинномеры заезжают с&nbsp;северных ворот.</p>
+  </div>
+  <nav class="foot__n" aria-label="Разделы в подвале">
+    <a href="katalog.html">Каталог</a><a href="profil-po-chertezhu.html">Профиль по чертежу</a><a href="rezka.html">Резка и обработка</a>
+    <a href="proizvodstvo.html">Производство</a><a href="dostavka.html">Доставка и оплата</a><a href="kontakty.html">Контакты</a>
+    <a href="status.html">Статус заявки</a>
+  </nav>
+  <div class="foot__d">
+    <p>Компания, цены, документы и сотрудники придуманы.</p>
+    <a href="kabinet.html">Кабинет менеджера <span aria-hidden="true">→</span></a>
+  </div>
+</footer>
+<!-- footer:end -->
+
+<script src="js/data.js?v=38"></script>
+<script src="js/site.js?v=38"></script>
+<script src="js/model3d.js?v=38"></script>
+<script src="js/item.js?v=38"></script>
+</body>
+</html>

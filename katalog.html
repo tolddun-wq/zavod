@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Каталог — алюминиевый профиль и прокат цветных металлов · Профиль-Ока</title>
+<meta name="description" content="Уголки, трубы, швеллеры, шины, прутки и листы из алюминия, меди, латуни и бронзы. Фильтры по сплаву и размеру, остатки на складе и цены за метр с НДС.">
+<meta name="theme-color" content="#111111">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/commissioner-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css?v=38">
+<link rel="stylesheet" href="css/site.css?v=38">
+</head>
+<body>
+
+<!-- header:start -->
+<div class="shead">
+<div class="demo-strip">
+  <span>Сайт-образец: завод, цены и люди придуманы.</span>
+  <a href="kabinet.html">Посмотреть, куда попадает заявка <span aria-hidden="true">→</span></a>
+  <a href="status.html" class="hide-m">Статус заявки глазами покупателя</a>
+</div>
+
+<header class="top">
+  <a class="logo" href="index.html" aria-label="Профиль-Ока, на главную"><svg class="logo__i" viewBox="0 0 40 32" aria-hidden="true"><rect x="2" y="23" width="36" height="3" fill="currentColor"/><path d="M5 26h4v5H5zM31 26h4v5h-4z" fill="currentColor"/><path d="M3 5h9v18H3z" fill="currentColor"/><circle cx="15" cy="14" r="5" fill="var(--acc, #1A4A8F)"/><circle cx="15" cy="14" r="1.6" fill="#fff"/><rect x="19" y="12.5" width="11" height="3" fill="var(--acc, #1A4A8F)"/><path d="M22 23l2.5-5 2.5 5z" fill="currentColor"/><path d="M30 11h7v12h-7z" fill="currentColor"/></svg><span>ПРОФИЛЬ-ОКА</span></a>
+  <nav class="nav" id="menu" aria-label="Разделы сайта">
+    <a href="katalog.html" aria-current="page">Каталог</a>
+    <a href="profil-po-chertezhu.html">Профиль по чертежу</a>
+    <a href="rezka.html">Резка</a>
+    <a href="proizvodstvo.html">Производство</a>
+    <a href="dostavka.html">Доставка</a>
+    <a href="kontakty.html">Контакты</a>
+    <div class="nav__m">
+      <a href="tel:+70000000000" data-demo="Звонок в отдел продаж">+7 (000) 000-00-00</a>
+      <a href="kabinet.html">Кабинет менеджера</a>
+    </div>
+  </nav>
+  <a class="top__ph" href="tel:+70000000000" data-demo="Звонок в отдел продаж">+7 (000) 000-00-00<small>Калуга, пн–пт 8:00–16:00</small></a>
+  <a class="top__ph top__ph--2" href="tel:+70000000000" data-demo="Звонок в московский офис">+7 (000) 000-00-01<small>Москва, офис и склад</small></a>
+  <a class="top__req" href="zayavka.html">Заявка на КП <b data-req-count>0</b></a>
+  <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="menu"><span></span></button>
+</header>
+</div>
+<!-- header:end -->
+
+<main class="page">
+  <div class="pagehead">
+    <nav class="crumbs" aria-label="Вы здесь"><a href="index.html">Главная</a><span aria-hidden="true">→</span><span id="crumbCat">Каталог</span></nav>
+    <h1 class="h1" id="pageTitle">Каталог</h1>
+    <p class="pagehead__t">Цены за&nbsp;метр с&nbsp;НДС, остатки на&nbsp;складе в&nbsp;Калуге — на&nbsp;сегодня. Нет нужного размера — <a href="profil-po-chertezhu.html">спрессуем по&nbsp;чертежу</a>.</p>
+  </div>
+
+  <nav class="ctabs" id="ctabs" aria-label="Разделы каталога"></nav>
+
+  <div class="cat-l">
+    <aside class="filt" id="filt" aria-label="Фильтры">
+      <div class="filt__head">
+        <b class="h3">Фильтры</b>
+        <button class="filt__x" type="button" id="filtClose" aria-label="Закрыть фильтры">×</button>
+      </div>
+      <form id="ff" novalidate>
+        <label class="filt__q">
+          <span class="sr">Поиск по каталогу</span>
+          <input type="search" id="fq" name="q" placeholder="Поиск: труба 40×3, Д16Т, Ø20" autocomplete="off">
+        </label>
+        <fieldset class="fg"><legend>Металл</legend><div id="fMetal"></div></fieldset>
+        <fieldset class="fg"><legend>Сплав и состояние</legend><div id="fAlloy"></div></fieldset>
+        <fieldset class="fg"><legend id="fSizeL">Размер, мм</legend>
+          <div class="rng"><label>от<input type="number" id="fMin" inputmode="decimal" min="0" step="any"></label><label>до<input type="number" id="fMax" inputmode="decimal" min="0" step="any"></label></div>
+          <p class="fg__h" id="fSizeH"></p>
+        </fieldset>
+        <fieldset class="fg"><legend>Стенка или толщина, мм</legend>
+          <div class="chips" id="fWall"></div>
+        </fieldset>
+        <fieldset class="fg"><legend>Покрытие</legend><div id="fCoat"></div></fieldset>
+        <label class="tgl"><input type="checkbox" id="fStock"><span>Только в наличии</span></label>
+        <button class="btn btn--o btn--w" type="button" id="fReset">Сбросить фильтры</button>
+      </form>
+    </aside>
+
+    <section class="res" aria-labelledby="pageTitle">
+      <form class="msearch" id="msearch" role="search">
+        <label class="sr" for="fq2">Поиск по каталогу</label>
+        <input type="search" id="fq2" placeholder="Поиск: труба 40×3, Д16Т, Ø20" autocomplete="off" enterkeyhint="search">
+        <button class="btn" type="submit">Найти</button>
+      </form>
+      <div class="res__bar">
+        <p class="res__n" id="resN" aria-live="polite"></p>
+        <div class="res__ctl">
+          <button class="btn btn--o res__open" type="button" id="filtOpen" aria-controls="filt">Фильтры <b id="fCount"></b></button>
+          <label class="res__sort"><span>Сортировка</span>
+            <select id="fSort">
+              <option value="size">по размеру</option>
+              <option value="price">сначала дешевле</option>
+              <option value="-price">сначала дороже</option>
+              <option value="-stock">больше на складе</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div class="chosen" id="chosen"></div>
+      <table class="ptab" id="ptab">
+        <thead><tr><th class="ptab__s" aria-label="Сечение"></th><th>Наименование</th><th>Сплав</th><th class="r">Масса 1&nbsp;м</th><th class="r">На складе</th><th class="r">Цена с НДС</th><th class="ptab__a"><span class="sr">Действия</span></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div class="empty" id="empty" hidden>
+        <h2 class="h3">Ничего не нашли</h2>
+        <p id="emptyT"></p>
+        <div class="btns"><button class="btn" type="button" id="emptyReset">Сбросить фильтры</button><a class="btn btn--o" href="zayavka.html">Прислать спецификацию</a></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div class="cmpbar" id="cmpbar" hidden>
+  <span id="cmpT"></span>
+  <button class="cmpbar__c" type="button" id="cmpClear">Очистить</button>
+  <a class="btn" href="sravnenie.html">Сравнить <span aria-hidden="true">→</span></a>
+</div>
+
+<!-- footer:start -->
+<footer class="foot">
+  <div class="foot__a">
+    <a class="logo" href="index.html"><svg class="logo__i" viewBox="0 0 40 32" aria-hidden="true"><rect x="2" y="23" width="36" height="3" fill="currentColor"/><path d="M5 26h4v5H5zM31 26h4v5h-4z" fill="currentColor"/><path d="M3 5h9v18H3z" fill="currentColor"/><circle cx="15" cy="14" r="5" fill="var(--acc, #1A4A8F)"/><circle cx="15" cy="14" r="1.6" fill="#fff"/><rect x="19" y="12.5" width="11" height="3" fill="var(--acc, #1A4A8F)"/><path d="M22 23l2.5-5 2.5 5z" fill="currentColor"/><path d="M30 11h7v12h-7z" fill="currentColor"/></svg><span>ПРОФИЛЬ-ОКА</span></a>
+    <p>Калуга, Индустриальная ул., 00, корпус 3 (адрес вымышлен). Склад отгружает с&nbsp;8:00 до&nbsp;16:00, машины-длинномеры заезжают с&nbsp;северных ворот.</p>
+  </div>
+  <nav class="foot__n" aria-label="Разделы в подвале">
+    <a href="katalog.html">Каталог</a><a href="profil-po-chertezhu.html">Профиль по чертежу</a><a href="rezka.html">Резка и обработка</a>
+    <a href="proizvodstvo.html">Производство</a><a href="dostavka.html">Доставка и оплата</a><a href="kontakty.html">Контакты</a>
+    <a href="status.html">Статус заявки</a>
+  </nav>
+  <div class="foot__d">
+    <p>Компания, цены, документы и сотрудники придуманы.</p>
+    <a href="kabinet.html">Кабинет менеджера <span aria-hidden="true">→</span></a>
+  </div>
+</footer>
+<!-- footer:end -->
+
+<script src="js/data.js?v=38"></script>
+<script src="js/site.js?v=38"></script>
+<script src="js/catalog.js?v=38"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Заявка на коммерческое предложение — Профиль-Ока</title>
+<meta name="description" content="Соберите позиции, укажите количество и реквизиты — менеджер пришлёт КП с ценой и сроком за 2 рабочих часа.">
+<meta name="theme-color" content="#111111">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/commissioner-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css?v=38">
+<link rel="stylesheet" href="css/site.css?v=38">
+</head>
+<body>
+
+<!-- header:start -->
+<div class="shead">
+<div class="demo-strip">
+  <span>Сайт-образец: завод, цены и люди придуманы.</span>
+  <a href="kabinet.html">Посмотреть, куда попадает заявка <span aria-hidden="true">→</span></a>
+  <a href="status.html" class="hide-m">Статус заявки глазами покупателя</a>
+</div>
+
+<header class="top">
+  <a class="logo" href="index.html" aria-label="Профиль-Ока, на главную"><svg class="logo__i" viewBox="0 0 40 32" aria-hidden="true"><rect x="2" y="23" width="36" height="3" fill="currentColor"/><path d="M5 26h4v5H5zM31 26h4v5h-4z" fill="currentColor"/><path d="M3 5h9v18H3z" fill="currentColor"/><circle cx="15" cy="14" r="5" fill="var(--acc, #1A4A8F)"/><circle cx="15" cy="14" r="1.6" fill="#fff"/><rect x="19" y="12.5" width="11" height="3" fill="var(--acc, #1A4A8F)"/><path d="M22 23l2.5-5 2.5 5z" fill="currentColor"/><path d="M30 11h7v12h-7z" fill="currentColor"/></svg><span>ПРОФИЛЬ-ОКА</span></a>
+  <nav class="nav" id="menu" aria-label="Разделы сайта">
+    <a href="katalog.html">Каталог</a>
+    <a href="profil-po-chertezhu.html">Профиль по чертежу</a>
+    <a href="rezka.html">Резка</a>
+    <a href="proizvodstvo.html">Производство</a>
+    <a href="dostavka.html">Доставка</a>
+    <a href="kontakty.html">Контакты</a>
+    <div class="nav__m">
+      <a href="tel:+70000000000" data-demo="Звонок в отдел продаж">+7 (000) 000-00-00</a>
+      <a href="kabinet.html">Кабинет менеджера</a>
+    </div>
+  </nav>
+  <a class="top__ph" href="tel:+70000000000" data-demo="Звонок в отдел продаж">+7 (000) 000-00-00<small>Калуга, пн–пт 8:00–16:00</small></a>
+  <a class="top__ph top__ph--2" href="tel:+70000000000" data-demo="Звонок в московский офис">+7 (000) 000-00-01<small>Москва, офис и склад</small></a>
+  <a class="top__req" href="zayavka.html">Заявка на КП <b data-req-count>0</b></a>
+  <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="menu"><span></span></button>
+</header>
+</div>
+<!-- header:end -->
+
+<main class="page">
+  <div class="pagehead">
+    <nav class="crumbs" aria-label="Вы здесь"><a href="index.html">Главная</a><span aria-hidden="true">→</span><span>Заявка на КП</span></nav>
+    <h1 class="h1">Заявка на&nbsp;КП</h1>
+    <p class="pagehead__t">Проверьте позиции и&nbsp;количество, оставьте контакты. Менеджер сверит остатки и&nbsp;резку и&nbsp;пришлёт коммерческое предложение за&nbsp;2&nbsp;рабочих часа. Отдел продаж работает пн–пт с&nbsp;8:00 до&nbsp;16:00: заявку, отправленную вечером или в&nbsp;выходные, разберём утром ближайшего рабочего дня. Оплачивать сейчас ничего не&nbsp;нужно.</p>
+  </div>
+
+  <div class="req" id="reqWrap">
+    <section class="req__list" aria-labelledby="listT">
+      <div class="req__h"><h2 class="h3" id="listT">Состав заявки</h2><a class="lnk" href="katalog.html">Добавить из каталога <span aria-hidden="true">→</span></a></div>
+      <div id="items"></div>
+      <div class="req__tot" id="tot"></div>
+      <div class="empty" id="rEmpty" hidden>
+        <h2 class="h3">В заявке пока ничего</h2>
+        <p>Добавьте позиции из&nbsp;каталога — или приложите спецификацию файлом в&nbsp;форме заявки: Excel, PDF или фото списка. Менеджер разберёт сам.</p>
+        <p class="req__quick-t">Часто берут:</p>
+        <div class="req__quick" id="quick"></div>
+        <div class="btns"><a class="btn" href="katalog.html">Открыть каталог <span aria-hidden="true">→</span></a></div>
+      </div>
+    </section>
+
+    <section class="req__form" aria-labelledby="formT">
+      <h2 class="h3" id="formT">Кому прислать КП</h2>
+      <form id="rf" novalidate>
+        <div class="err-sum" id="errSum" role="alert" hidden></div>
+        <label class="fld"><span>Компания <i>обязательно</i></span><input name="company" autocomplete="organization" placeholder="ООО «Ваша компания»" required></label>
+        <label class="fld"><span>ИНН <i>по желанию, ускорит договор</i></span><input name="inn" inputmode="numeric" maxlength="12" placeholder="10 или 12 цифр"></label>
+        <label class="fld"><span>Контактное лицо <i>обязательно</i></span><input name="contact" autocomplete="name" placeholder="Имя и отчество" required></label>
+        <div class="fld2">
+          <label class="fld"><span>Телефон <i>обязательно</i></span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" required></label>
+          <label class="fld"><span>Почта для КП <i>обязательно</i></span><input name="email" type="email" autocomplete="email" placeholder="zakaz@company.ru" required></label>
+        </div>
+        <fieldset class="fg fg--r"><legend>Доставка</legend>
+          <div class="seg seg--3">
+            <label><input type="radio" name="delivery" value="Наша машина" checked><span>Наша машина</span></label>
+            <label><input type="radio" name="delivery" value="Транспортная компания"><span>Через ТК</span></label>
+            <label><input type="radio" name="delivery" value="Самовывоз"><span>Самовывоз</span></label>
+          </div>
+        </fieldset>
+        <label class="fld" id="cityF">Город доставки<input name="city" autocomplete="address-level2" placeholder="Калуга" value="Калуга"></label>
+        <label class="fld">Комментарий<textarea name="comment" rows="3" placeholder="Сроки, разгрузка, упаковка, нужен ли паспорт на каждую партию"></textarea></label>
+        <label class="file"><input type="file" name="file" id="file" accept=".xlsx,.xls,.csv,.pdf,.dwg,.dxf,.step,.stp,.jpg,.jpeg,.png"><span id="fileT">Приложить спецификацию или чертёж</span><small>Excel, PDF, DWG, STEP, фото — до 20 МБ</small></label>
+        <label class="ck ck--agree"><input type="checkbox" name="agree" required><span>Согласен на&nbsp;обработку контактных данных для ответа на&nbsp;заявку</span></label>
+        <button class="btn btn--w" type="submit" id="send">Отправить заявку</button>
+      </form>
+    </section>
+  </div>
+
+  <section class="done" id="done" hidden aria-live="polite">
+    <p class="kick">Заявка отправлена</p>
+    <h2 class="h1" id="doneN"></h2>
+    <p class="done__t" id="doneT"></p>
+    <div class="done__save">
+      <b>Запишите номер заявки и&nbsp;почту</b>
+      <span>По&nbsp;ним можно посмотреть статус на&nbsp;странице <a href="status.html" id="trackLink">«Статус заявки»</a>. На&nbsp;этом устройстве мы&nbsp;их&nbsp;уже запомнили — заявка будет в&nbsp;списке «Ваши заявки».</span>
+    </div>
+    <ol class="done__s">
+      <li><b>Сейчас</b><span>заявка у&nbsp;менеджера отдела продаж, он&nbsp;её уже видит</span></li>
+      <li><b id="doneWhen">В&nbsp;течение 2&nbsp;часов</b><span>проверит остатки и&nbsp;резку, позвонит, если что-то неясно</span></li>
+      <li><b>КП на&nbsp;почту</b><span>цена, срок отгрузки и&nbsp;счёт. Договор подпишем по&nbsp;ЭДО</span></li>
+    </ol>
+  </section>
+</main>
+
+<!-- footer:start -->
+<footer class="foot">
+  <div class="foot__a">
+    <a class="logo" href="index.html"><svg class="logo__i" viewBox="0 0 40 32" aria-hidden="true"><rect x="2" y="23" width="36" height="3" fill="currentColor"/><path d="M5 26h4v5H5zM31 26h4v5h-4z" fill="currentColor"/><path d="M3 5h9v18H3z" fill="currentColor"/><circle cx="15" cy="14" r="5" fill="var(--acc, #1A4A8F)"/><circle cx="15" cy="14" r="1.6" fill="#fff"/><rect x="19" y="12.5" width="11" height="3" fill="var(--acc, #1A4A8F)"/><path d="M22 23l2.5-5 2.5 5z" fill="currentColor"/><path d="M30 11h7v12h-7z" fill="currentColor"/></svg><span>ПРОФИЛЬ-ОКА</span></a>
+    <p>Калуга, Индустриальная ул., 00, корпус 3 (адрес вымышлен). Склад отгружает с&nbsp;8:00 до&nbsp;16:00, машины-длинномеры заезжают с&nbsp;северных ворот.</p>
+  </div>
+  <nav class="foot__n" aria-label="Разделы в подвале">
+    <a href="katalog.html">Каталог</a><a href="profil-po-chertezhu.html">Профиль по чертежу</a><a href="rezka.html">Резка и обработка</a>
+    <a href="proizvodstvo.html">Производство</a><a href="dostavka.html">Доставка и оплата</a><a href="kontakty.html">Контакты</a>
+    <a href="status.html">Статус заявки</a>
+  </nav>
+  <div class="foot__d">
+    <p>Компания, цены, документы и сотрудники придуманы.</p>
+    <a href="kabinet.html">Кабинет менеджера <span aria-hidden="true">→</span></a>
+  </div>
+</footer>
+<!-- footer:end -->
+
+<script src="js/data.js?v=38"></script>
+<script src="js/site.js?v=38"></script>
+<script src="js/request.js?v=38"></script>
+</body>
+</html>

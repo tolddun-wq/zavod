@@ -1,0 +1,20 @@
+Фото с Unsplash (лицензия Unsplash: можно использовать бесплатно, без указания автора).
+Имя файла в img/ — ссылка на оригинал.
+
+profil-truby — https://unsplash.com/photos/a-pile-of-steel-pipes-stacked-on-top-of-each-other-Q0qyKRcJWy0
+ugolki       — https://unsplash.com/photos/a-stack-of-metal-sheets-stacked-on-top-of-each-other-GsJwAFOtAG4
+frezer       — https://images.unsplash.com/photo-1740209475472-aa7d280f7452
+tokarnyj     — https://images.unsplash.com/photo-1666634157070-6fd830fb5672
+ceh          — https://images.unsplash.com/photo-1787039467622-ddec5c24320c
+sklad        — https://unsplash.com/photos/assorted-metal-bars-UObdhwSso5o
+prutki       — https://images.unsplash.com/photo-1681108212545-04cabe9cf771
+detali       — https://images.unsplash.com/photo-1769147339214-076740872485
+obrabotka    — https://images.unsplash.com/photo-1713371398485-7bde1bde9def
+priemka      — https://images.unsplash.com/photo-1564182842834-681b7be6de4b
+people-1      — https://images.unsplash.com/photo-1758691737605-69a0e78bd193 («фото для примера»)
+people-2      — https://images.unsplash.com/photo-1705645930353-0e335311ef20 («фото для примера»)
+people-3      — https://images.unsplash.com/photo-1560250097-0b93528c311a («фото для примера»)
+(img/plashka.webp — текстура шлифованного металла нарисована программно, не фото)
+pogruzka     — https://images.unsplash.com/photo-1714627798569-b3e36d409c4b
+dostavka     — https://images.unsplash.com/photo-1766785368863-f2188a8c8b32
+otdel        — https://images.unsplash.com/photo-1766066014237-00645c74e9c6 («фото для примера»)

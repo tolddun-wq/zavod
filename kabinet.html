@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кабинет менеджера — заявки · Профиль-Ока</title>
+<meta name="description" content="Заявки с сайта: этапы от новой до отгрузки, список и доска, история работы.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#111111">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/commissioner-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css?v=38">
+<link rel="stylesheet" href="css/site.css?v=38">
+</head>
+<body class="crm-page">
+
+<!-- header:start -->
+<div class="shead">
+<div class="demo-strip">
+  <span>Сайт-образец: завод, цены и люди придуманы.</span>
+  <a href="kabinet.html" aria-current="page">Посмотреть, куда попадает заявка <span aria-hidden="true">→</span></a>
+  <a href="status.html" class="hide-m">Статус заявки глазами покупателя</a>
+</div>
+
+<header class="top">
+  <a class="logo" href="index.html" aria-label="Профиль-Ока, на главную"><svg class="logo__i" viewBox="0 0 40 32" aria-hidden="true"><rect x="2" y="23" width="36" height="3" fill="currentColor"/><path d="M5 26h4v5H5zM31 26h4v5h-4z" fill="currentColor"/><path d="M3 5h9v18H3z" fill="currentColor"/><circle cx="15" cy="14" r="5" fill="var(--acc, #1A4A8F)"/><circle cx="15" cy="14" r="1.6" fill="#fff"/><rect x="19" y="12.5" width="11" height="3" fill="var(--acc, #1A4A8F)"/><path d="M22 23l2.5-5 2.5 5z" fill="currentColor"/><path d="M30 11h7v12h-7z" fill="currentColor"/></svg><span>ПРОФИЛЬ-ОКА</span></a>
+  <nav class="nav" id="menu" aria-label="Разделы сайта">
+    <a href="katalog.html">Каталог</a>
+    <a href="profil-po-chertezhu.html">Профиль по чертежу</a>
+    <a href="rezka.html">Резка</a>
+    <a href="proizvodstvo.html">Производство</a>
+    <a href="dostavka.html">Доставка</a>
+    <a href="kontakty.html">Контакты</a>
+    <div class="nav__m">
+      <a href="tel:+70000000000" data-demo="Звонок в отдел продаж">+7 (000) 000-00-00</a>
+      <a href="kabinet.html">Кабинет менеджера</a>
+    </div>
+  </nav>
+  <a class="top__ph" href="tel:+70000000000" data-demo="Звонок в отдел продаж">+7 (000) 000-00-00<small>Калуга, пн–пт 8:00–16:00</small></a>
+  <a class="top__ph top__ph--2" href="tel:+70000000000" data-demo="Звонок в московский офис">+7 (000) 000-00-01<small>Москва, офис и склад</small></a>
+  <a class="top__req" href="zayavka.html">Заявка на КП <b data-req-count>0</b></a>
+  <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="menu"><span></span></button>
+</header>
+</div>
+<!-- header:end -->
+
+<main class="page">
+  <section class="crm-note plate" aria-labelledby="plT">
+    <i class="rv rv--1"></i><i class="rv rv--2"></i><i class="rv rv--3"></i><i class="rv rv--4"></i>
+    <div class="crm-note__b">
+      <p class="plate__k">Кабинет менеджера · отдел продаж</p>
+      <h1 class="plate__t" id="plT">Заявки с сайта</h1>
+      <p class="plate__p">Каждая заявка, отправленная покупателем, появляется здесь. Менеджер ведёт её от&nbsp;первого звонка до&nbsp;отгрузки, а&nbsp;покупатель видит тот&nbsp;же этап на&nbsp;странице <a href="status.html">«Статус заявки»</a>. Сотрудники входят сюда по&nbsp;личному логину.</p>
+    </div>
+    <ol class="crm-note__s">
+      <li><b>1</b><span>Нажмите на&nbsp;заявку — откроется карточка: состав, контакты, история</span></li>
+      <li><b>2</b><span>Синяя кнопка в&nbsp;карточке переводит заявку на&nbsp;следующий этап</span></li>
+      <li><b>3</b><span>На&nbsp;доске заявки можно перетаскивать мышью между колонками</span></li>
+    </ol>
+    <div class="crm-note__a"><a class="btn" href="zayavka.html">Отправить заявку с сайта <span aria-hidden="true">→</span></a></div>
+  </section>
+
+  <section class="kpi" id="kpi" aria-label="Сводка"></section>
+  <p class="kpi__m" id="kpiM"></p>
+
+  <section class="crm" aria-label="Список заявок">
+    <div class="crm__bar">
+      <div class="vsw" role="group" aria-label="Вид"><button type="button" id="vList" aria-pressed="true">Список</button><button type="button" id="vBoard" aria-pressed="false">Доска</button></div>
+      <div class="stabs" id="stabs" role="tablist" aria-label="Этап"></div>
+      <div class="crm__f">
+        <label class="crm__q"><span class="sr">Поиск по заявкам</span><input type="search" id="cq" placeholder="Компания, номер, ИНН, позиция" autocomplete="off"></label>
+        <label class="crm__s"><span class="sr">Период</span><select id="cPer"><option value="0">За всё время</option><option value="1">Сегодня</option><option value="7">7 дней</option><option value="30">30 дней</option></select></label>
+        <label class="crm__s"><span class="sr">Ответственный</span><select id="cMan"></select></label>
+      </div>
+    </div>
+    <div id="listWrap">
+    <table class="ctbl" id="ctbl">
+      <thead><tr><th>Заявка</th><th>Клиент</th><th>Состав</th><th class="r">Сумма</th><th>Этап</th><th>Менеджер</th></tr></thead>
+      <tbody id="crows"></tbody>
+    </table>
+    </div>
+    <div class="board" id="board" hidden></div>
+    <div class="empty" id="cE" hidden><h2 class="h3">Заявок с&nbsp;такими условиями нет</h2><p>Сбросьте поиск и&nbsp;фильтры или отправьте новую заявку с&nbsp;сайта.</p><div class="btns"><button class="btn" type="button" id="cReset">Сбросить фильтры</button></div></div>
+  </section>
+</main>
+
+<aside class="drw" id="drw" aria-labelledby="dT" role="dialog" aria-modal="true" hidden>
+  <div class="drw__box">
+    <button class="drw__x" type="button" id="dX" aria-label="Закрыть карточку">×</button>
+    <div id="dBody"></div>
+  </div>
+</aside>
+
+<!-- footer:start -->
+<footer class="foot">
+  <div class="foot__a">
+    <a class="logo" href="index.html"><svg class="logo__i" viewBox="0 0 40 32" aria-hidden="true"><rect x="2" y="23" width="36" height="3" fill="currentColor"/><path d="M5 26h4v5H5zM31 26h4v5h-4z" fill="currentColor"/><path d="M3 5h9v18H3z" fill="currentColor"/><circle cx="15" cy="14" r="5" fill="var(--acc, #1A4A8F)"/><circle cx="15" cy="14" r="1.6" fill="#fff"/><rect x="19" y="12.5" width="11" height="3" fill="var(--acc, #1A4A8F)"/><path d="M22 23l2.5-5 2.5 5z" fill="currentColor"/><path d="M30 11h7v12h-7z" fill="currentColor"/></svg><span>ПРОФИЛЬ-ОКА</span></a>
+    <p>Калуга, Индустриальная ул., 00, корпус 3 (адрес вымышлен). Склад отгружает с&nbsp;8:00 до&nbsp;16:00, машины-длинномеры заезжают с&nbsp;северных ворот.</p>
+  </div>
+  <nav class="foot__n" aria-label="Разделы в подвале">
+    <a href="katalog.html">Каталог</a><a href="profil-po-chertezhu.html">Профиль по чертежу</a><a href="rezka.html">Резка и обработка</a>
+    <a href="proizvodstvo.html">Производство</a><a href="dostavka.html">Доставка и оплата</a><a href="kontakty.html">Контакты</a>
+    <a href="status.html">Статус заявки</a>
+  </nav>
+  <div class="foot__d">
+    <p>Компания, цены, документы и сотрудники придуманы.</p>
+    <a href="kabinet.html">Кабинет менеджера <span aria-hidden="true">→</span></a>
+  </div>
+</footer>
+<!-- footer:end -->
+
+<script src="js/data.js?v=38"></script>
+<script src="js/site.js?v=38"></script>
+<script src="js/crm.js?v=38"></script>
+</body>
+</html>
