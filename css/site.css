@@ -1254,3 +1254,16 @@ html { scroll-padding-top: 120px; }
 }
 
 @media (max-width: 760px) { .hero__word { background-image: url(../img/profil-truby-800.webp); } }
+
+/* Страница не «качается» вбок на телефоне */
+html { overflow-x: hidden; }
+body { max-width: 100%; overflow-x: clip; }
+body { overscroll-behavior-x: none; }
+.hero { overflow: hidden; }
+
+/* 404 */
+.nf__l { display: grid; margin-top: var(--s4); max-width: 420px; border-top: 1px solid var(--line); }
+.nf__l a { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--line); font-weight: 600; text-decoration: none; color: var(--ink); }
+.nf__l a:hover { color: var(--acc); }
+@media (max-width: 1000px) { .nf { grid-template-columns: 1fr; } .nf__s { order: -1; max-width: 260px; justify-self: start; } }
+@media (max-width: 760px) { .nf .h1 { font-size: 34px; } .nf .search input { min-width: 0; } }
