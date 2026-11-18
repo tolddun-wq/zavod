@@ -1267,3 +1267,12 @@ body { overscroll-behavior-x: none; }
 .nf__l a:hover { color: var(--acc); }
 @media (max-width: 1000px) { .nf { grid-template-columns: 1fr; } .nf__s { order: -1; max-width: 260px; justify-self: start; } }
 @media (max-width: 760px) { .nf .h1 { font-size: 34px; } .nf .search input { min-width: 0; } }
+
+/* Переключатели-сегменты: ровная высота, фокус внутри кнопки */
+.seg { align-items: stretch; }
+.seg label { display: flex; }
+.seg span { flex: 1; display: flex; align-items: center; justify-content: center; line-height: 1.2; }
+.seg input:focus-visible + span { outline: 2px solid #fff; outline-offset: -5px; }
+.seg input:not(:checked):focus-visible + span { outline-color: var(--acc); }
+.seg input:focus:not(:focus-visible) + span { outline: none; }
+@media (max-width: 760px) { .seg span { font-size: 14px; padding: 12px 6px; } }
